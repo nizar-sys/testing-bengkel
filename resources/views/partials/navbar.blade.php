@@ -14,10 +14,28 @@
           </li>
           <li class="nav-item">
             <a class="nav-link {{ ($title === "Haversine" ? 'active' : '') }}" href="/haversine">Haversine</a>
-          </li>     
-          <a href="/login" class="btn btn-master btn-primary ms-3">
-            Login
-          </a>
+          </li>
+          
+          @auth
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Welcome, {{ auth()->user()->name }}
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">MAINTENANCE</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <form action="/logout" method="POST">
+                  @csrf
+                  <button type="submit" class="dropdown-item">Logout</button>
+                </form>
+              </ul>
+            </li>
+          @else
+            <a href="/login" class="btn btn-master btn-primary ms-3">
+              Login
+            </a>
+          @endauth
+
         </ul>
       </div>
     </div>
