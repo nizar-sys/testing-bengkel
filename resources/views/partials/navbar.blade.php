@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
               {{-- <img src="#" width="30" height="24" class="d-inline-block align-text-top"> --}}
               SIBENG
             </a>
@@ -10,7 +10,7 @@
             <a class="nav-link {{ ($title === "Home" ? 'active' : '') }}" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ ($title === "Cari Bengkel" ? 'active' : '') }}" href="/cari-bengkel">Cari Bengkel</a>
+            <a class="nav-link {{ ($title === "Cari Bengkel" ? 'active' : '') }}" href="/bengkels">Cari Bengkel</a>
           </li>
           <li class="nav-item">
             <a class="nav-link {{ ($title === "Haversine" ? 'active' : '') }}" href="/haversine">Haversine</a>

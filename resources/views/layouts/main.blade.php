@@ -10,7 +10,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/> 
-    <link rel="stylesheet" type="text/css" href="/css/main.css"/> 
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-ui.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <script src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js" type="text/javascript" charset="utf-8"></script>
+ 
+    @stack('style')
 </head>
 <body>
     @include('partials.navbar')
@@ -82,5 +89,11 @@
     </section>
 
     <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/4406ce97fd.js" crossorigin="anonymous"></script>
+    <script src="/js/here.js"></script>
+    <script>
+      window.hereApiKey = "{{ env('HERE_API_KEY') }}"
+    </script>
+    @stack('script')
 </body>
 </html>

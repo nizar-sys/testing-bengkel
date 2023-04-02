@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BengkelController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -22,11 +23,11 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/cari-bengkel', function () {
-    return view('caribengkel', [
-        "title" => "Cari Bengkel"
-    ]);
-});
+// Route::get('/cari-bengkel', function () {
+//     return view('caribengkel', [
+//         "title" => "Cari Bengkel"
+//     ]);
+// });
 
 Route::get('/haversine', function () {
     return view('haversine');
@@ -40,3 +41,5 @@ Route::get('/register', [RegisterController::class, 'index'])->middleware('guest
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+
+Route::resource('bengkels', BengkelController::class);

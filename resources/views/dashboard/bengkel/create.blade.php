@@ -1,0 +1,70 @@
+@extends('layouts.main')
+
+@section('container')
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-8">
+            <div class="d-flex justify-content-between mb-3">
+                <div id="backTo">
+                    <a href="/bengkels" class="btn btn-secondary"><i class="fa-solid fa-angle-left"></i> Back</a>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">Create new bengkel</div>
+                <div class="card-body">
+                    <form action="/bengkels/create" method="POST">
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Title</label>
+                            <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title" required autofocus>
+                            @error('title')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Address</label>
+                            <textarea class="form-control @error('address') is-invalid @enderror" name="address" id="address" rows="5" required></textarea>
+                            @error('address')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description" rows="5" required></textarea>
+                            @error('description')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div id="here-maps mb-3">
+                            <label for="">Pin Location</label>
+                            <div style="height: 300px" id="mapContainer"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="latitude" class="form-label">Latitude</label>
+                            <input type="text" class="form-control @error('latitude') is-invalid @enderror" name="latitude" id="latitude" required>
+                            @error('latitude')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="longitude" class="form-label">Longitude</label>
+                            <input type="text" class="form-control @error('longitude') is-invalid @enderror" name="longitude" id="longitude" required>
+                            @error('longitude')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
