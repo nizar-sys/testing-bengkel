@@ -8,10 +8,17 @@
                     <a href="/bengkels" class="btn btn-secondary"><i class="fa-solid fa-angle-left"></i> Back</a>
                 </div>
             </div>
+            @if (session()->has('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             <div class="card">
-                <div class="card-header">Create new bengkel</div>
+                <div class="card-header">Create new data bengkel!</div>
                 <div class="card-body">
-                    <form action="/bengkels/create" method="POST">
+                    <form action="/bengkels" method="post">
+                        @csrf
                         <div class="mb-3">
                             <label for="title" class="form-label">Title</label>
                             <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title" required autofocus>
@@ -41,7 +48,7 @@
                         </div>
                         <div id="here-maps mb-3">
                             <label for="">Pin Location</label>
-                            <div style="height: 300px" id="mapContainer"></div>
+                            <div style="height: 500px" id="mapContainer"></div>
                         </div>
                         <div class="mb-3">
                             <label for="latitude" class="form-label">Latitude</label>
@@ -68,3 +75,9 @@
         </div>
     </div>
 @endsection
+
+@push('script')
+    <script>
+        window.action = "submit"
+    </script>
+@endpush

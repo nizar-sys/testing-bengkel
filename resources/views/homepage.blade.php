@@ -11,7 +11,7 @@
         <div class="hero-text">
           <p>Lorem ipsum dolor sit amet consectetur. Duis nullam posuere nunc in. Sem rhoncus lobortis id non ornare duis adipiscing dui. Suspendisse ultricies purus phasellus aliquam commodo venenatis neque. </p>
         </div>
-        <a href="/cari-bengkel" class="btn btn-master btn-primary">
+        <a href="/bengkels" class="btn btn-master btn-primary">
           Search Now!
         </a>
       </div>

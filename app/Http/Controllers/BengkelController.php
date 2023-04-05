@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bengkel;
 use Illuminate\Http\Request;
 
 class BengkelController extends Controller
@@ -38,7 +39,19 @@ class BengkelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|min:5',
+            'address' => 'required|min:5',
+            'description' => 'required|min:10',
+            'latitude' => 'required',
+            'longitude' => 'required'
+        ]);
+
+        $validatedData['user_id'] = auth()->user()->id;
+
+        Bengkel::create($validatedData);
+
+        return redirect('/bengkels/create')->with('success', 'New data bengkel has been created!');
     }
 
     /**
