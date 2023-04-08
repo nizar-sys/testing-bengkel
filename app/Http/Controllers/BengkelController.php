@@ -15,7 +15,15 @@ class BengkelController extends Controller
     public function index()
     {
         return view('caribengkel', [
-            "title" => "Cari Bengkel"
+            "title" => "Cari Bengkel",
+            "bengkels" => Bengkel::all()
+        ]);
+    }
+
+    public function browse()
+    {
+        return view('browse', [
+            "title" => "Lokasi Bengkel"
         ]);
     }
 

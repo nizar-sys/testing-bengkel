@@ -42,4 +42,6 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
-Route::resource('bengkels', BengkelController::class);
+Route::resource('bengkels', BengkelController::class)->middleware('auth');
+
+Route::get('/browse/bengkels', [BengkelController::class, 'browse'])->middleware('auth');

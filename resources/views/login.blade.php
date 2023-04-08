@@ -53,6 +53,8 @@
         <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
         <div class="home mt-2 mb-3">
           <small>Don't have account ? <a href="/register">Register Now!</a></small>
+          <br>
+          <small>Want to see our homepage ? <a href="/">SIBENG</a></small>
         </div>
         <p class="mt-3 mb-3 text-muted">&copy; 2023</p>
       </form>
