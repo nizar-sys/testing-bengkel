@@ -13,20 +13,28 @@
                 </div>
             </div>
 
+            @if (session()->has('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
             @foreach ($bengkels as $bengkel)
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">
                         {{ $bengkel->title }}
-                        <form action="#" method="DELETE">
+                        <form action="/bengkels/{{ $bengkel->id }}" method="post">
+                            @method('delete')
                             @csrf
-                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                            <a href="#" class="btn btn-sm btn-info text-white">Edit</a>
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure ?')">Delete</button>
+                            <a href="/bengkels/{{ $bengkel->id }}/edit" class="btn btn-sm btn-info text-white">Edit</a>
                         </form>
                     </h5>
                     <h6 class="card-subtitle">{{ $bengkel->address }}</h6>
                     <p class="card-text">{{ $bengkel->description }}</p>
-                    <a href="#" class="card-link">Direction</a>
+                    <a href="#" onclick="openDirection({{ $bengkel->latitude }}, {{ $bengkel->longitude }}, {{ $bengkel->id }})" class="card-link">Direction</a>
                 </div>
             </div>   
             @endforeach

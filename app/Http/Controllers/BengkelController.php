@@ -59,7 +59,7 @@ class BengkelController extends Controller
 
         Bengkel::create($validatedData);
 
-        return redirect('/bengkels/create')->with('success', 'New data bengkel has been created!');
+        return redirect('/bengkels')->with('success', 'New data bengkel has been created!');
     }
 
     /**
@@ -68,9 +68,14 @@ class BengkelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        //
+        $bengkel = Bengkel::findOrFail($id);
+
+        return view('route', [
+            "title" => "Direction",
+            "bengkels" => $bengkel
+        ]);
     }
 
     /**
@@ -81,7 +86,12 @@ class BengkelController extends Controller
      */
     public function edit($id)
     {
-        //
+        $bengkel = Bengkel::findOrFail($id);
+
+        return view('dashboard.bengkel.edit', [
+            "bengkels" => $bengkel,
+            "title" => "Update"
+        ]);
     }
 
     /**
@@ -93,7 +103,20 @@ class BengkelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|min:5',
+            'address' => 'required|min:5',
+            'description' => 'required|min:10',
+            'latitude' => 'required',
+            'longitude' => 'required'
+        ]);
+
+        $validatedData['user_id'] = auth()->user()->id;
+
+        Bengkel::where('id', $id)
+            ->update($validatedData);
+
+        return redirect('/bengkels')->with('success', 'Data bengkel has been updated!');
     }
 
     /**
@@ -104,6 +127,8 @@ class BengkelController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Bengkel::destroy($id);
+
+        return redirect('/bengkels')->with('success', 'Data bengkel has been deleted!');
     }
 }
