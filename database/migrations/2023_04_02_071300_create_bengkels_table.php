@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('latitude');
             $table->string('longitude');
+            $table->string('image');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

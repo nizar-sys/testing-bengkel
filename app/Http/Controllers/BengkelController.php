@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bengkel;
+use App\Models\BengkelPhoto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BengkelController extends Controller
 {
@@ -52,9 +54,14 @@ class BengkelController extends Controller
             'address' => 'required|min:5',
             'description' => 'required|min:10',
             'latitude' => 'required',
-            'longitude' => 'required'
+            'longitude' => 'required',
+            'image' => 'required|image|file|max:2048'
         ]);
 
+        if ($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('bengkel-images');
+        }
+        
         $validatedData['user_id'] = auth()->user()->id;
 
         Bengkel::create($validatedData);
@@ -108,8 +115,16 @@ class BengkelController extends Controller
             'address' => 'required|min:5',
             'description' => 'required|min:10',
             'latitude' => 'required',
-            'longitude' => 'required'
+            'longitude' => 'required',
+            'image' => 'required|image|file|max:2048'
         ]);
+
+        if ($request->file('image')) {
+            if($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['image'] = $request->file('image')->store('bengkel-images');
+        }
 
         $validatedData['user_id'] = auth()->user()->id;
 
@@ -125,8 +140,12 @@ class BengkelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
+        if($request->image) {
+            Storage::delete($request->image);
+        }
+
         Bengkel::destroy($id);
 
         return redirect('/bengkels')->with('success', 'Data bengkel has been deleted!');

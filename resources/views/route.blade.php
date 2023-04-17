@@ -17,6 +17,7 @@
             <div class="card mb-3">
                 <div class="card-body">
                     <p>Information :</p>
+                    <img src="{{ asset('storage/' . $bengkels->image) }}" alt="" class="img-fluid">
                     <h4>{{ $bengkels->title }}</h4>
                     <span>{{ $bengkels->address }}</span>
                     <p>{{ $bengkels->description }}</p>

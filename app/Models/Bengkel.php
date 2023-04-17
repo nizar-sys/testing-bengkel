@@ -11,10 +11,10 @@ class Bengkel extends Model
 
     protected $guarded = [];
 
-    public function photos()
-    {
-        return $this->hasMany(BengkelPhoto::class, 'bengkel_id', 'id');
-    }
+    // public function photos()
+    // {
+    //     return $this->hasMany(BengkelPhoto::class, 'bengkel_id', 'id');
+    // }
 
     public function user()
     {

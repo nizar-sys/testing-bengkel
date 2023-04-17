@@ -9,10 +9,10 @@ class BengkelPhoto extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    // protected $guarded = [];
 
-    public function bengkel()
-    {
-        return $this->belongsTo(Bengkel::class, 'bengkel_id', 'id');
-    }
+    // public function bengkel()
+    // {
+    //     return $this->belongsTo(Bengkel::class, 'bengkel_id', 'id');
+    // }
 }
