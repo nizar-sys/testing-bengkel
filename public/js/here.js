@@ -152,7 +152,7 @@ if (navigator.geolocation) {
                     'transportMode': 'car',
                     'origin': urlParams.get('from'),
                     'destination': urlParams.get('to'),
-                    'return': 'polyline',
+                    'return': 'polyline,summary',
                     'route': 'summary',
                   };
 
@@ -278,8 +278,8 @@ if (navigator.geolocation) {
               const sumDiv = document.getElementById('summary');
               const markup = `
                   <ul>
-                    <li>Total Distance: ${summary?.length/1000 !== 0} (masih salah)Km</li>
-                    <li>Travel Time: ${summary?.duration.toMMSS() !== 0 } (masih salah)(in current traffic)</li>
+                    <li>Total Distance: ${summary.length / 1000} Km</li>
+                    <li>Travel Time: ${summary.duration.toMMSS()} (in current traffic)</li>
                   </ul>
               `;
               sumDiv.innerHTML = markup;
