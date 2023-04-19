@@ -41,6 +41,7 @@ Route::get('/register', [RegisterController::class, 'index'])->middleware('guest
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/dashboard/databengkel', [DashboardController::class, 'show'])->middleware('auth');
 
 Route::resource('bengkels', BengkelController::class)->middleware('auth');
 
