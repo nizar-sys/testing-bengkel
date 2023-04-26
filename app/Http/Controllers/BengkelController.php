@@ -36,7 +36,7 @@ class BengkelController extends Controller
      */
     public function create()
     {
-        return view('dashboard.bengkel.create', [
+        return view('dashboard.bengkel.create1', [
             "title" => "Create Bengkel"
         ]);    
     }
@@ -66,7 +66,7 @@ class BengkelController extends Controller
 
         Bengkel::create($validatedData);
 
-        return redirect('/bengkels')->with('success', 'New data bengkel has been created!');
+        return redirect('/bengkels/create')->with('success', 'New data bengkel has been created!');
     }
 
     /**
@@ -131,7 +131,7 @@ class BengkelController extends Controller
         Bengkel::where('id', $id)
             ->update($validatedData);
 
-        return redirect('/bengkels')->with('success', 'Data bengkel has been updated!');
+        return redirect('/databengkel')->with('success', 'Data bengkel has been updated!');
     }
 
     /**
@@ -148,6 +148,6 @@ class BengkelController extends Controller
 
         Bengkel::destroy($id);
 
-        return redirect('/bengkels')->with('success', 'Data bengkel has been deleted!');
+        return redirect('/databengkel')->with('success', 'Data bengkel has been deleted!');
     }
 }
