@@ -21,6 +21,16 @@
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Welcome, {{ auth()->user()->name }}
               </a>
+              @if (auth()->user()->roles == "user")
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <form action="/logout" method="POST">
+                  @csrf
+                  <button type="submit" class="dropdown-item">Logout</button>
+                </form>
+              </ul>
+              @else
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="/dashboard">Dashboard</a></li>
                 <li><hr class="dropdown-divider"></li>
@@ -29,6 +39,7 @@
                   <button type="submit" class="dropdown-item">Logout</button>
                 </form>
               </ul>
+              @endif
             </li>
           @else
             <a href="/login" class="btn btn-master btn-primary ms-3">

@@ -20,25 +20,37 @@
                 </div>
             @endif
 
-            @foreach ($bengkels as $bengkel)
+            @if ($bengkels->count() == 0)
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">
-                            {{ $bengkel->title }}
-                            {{-- <form action="/bengkels/{{ $bengkel->id }}" method="post">
-                                @method('delete')
-                                @csrf
-                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure ?')">Delete</button>
-                                <input type="hidden" name="image" value="{{ $bengkel->image }}">
-                                <a href="/bengkels/{{ $bengkel->id }}/edit" class="btn btn-sm btn-info text-white">Edit</a>
-                            </form> --}}
+                            Data bengkel belum tersedia!
                         </h5>
-                        <h6 class="card-subtitle">{{ $bengkel->address }}</h6>
-                        <p class="card-text">{{ $bengkel->description }}</p>
-                        <a href="#" onclick="openDirection({{ $bengkel->latitude }}, {{ $bengkel->longitude }}, {{ $bengkel->id }})" class="card-link">Direction</a>
                     </div>
-                </div>              
-            @endforeach
+                </div>
+            @else
+                @foreach ($bengkels as $bengkel)
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                {{ $bengkel->title }}
+                                {{-- <form action="/bengkels/{{ $bengkel->id }}" method="post">
+                                    @method('delete')
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure ?')">Delete</button>
+                                    <input type="hidden" name="image" value="{{ $bengkel->image }}">
+                                    <a href="/bengkels/{{ $bengkel->id }}/edit" class="btn btn-sm btn-info text-white">Edit</a>
+                                </form> --}}
+                            </h5>
+                            <h6 class="card-subtitle">{{ $bengkel->address }}</h6>
+                            <p class="card-text">{{ $bengkel->description }}</p>
+                            <a href="#" onclick="openDirection({{ $bengkel->latitude }}, {{ $bengkel->longitude }}, {{ $bengkel->id }})" class="card-link">Direction</a>
+                        </div>
+                    </div>              
+                @endforeach
+            @endif
+
+            
         </div>
     </div>
 @endsection

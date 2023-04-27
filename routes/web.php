@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardController1;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,8 +47,10 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 Route::resource('bengkels', BengkelController::class)->middleware('auth');
 
-Route::resource('dashboard', DashboardController1::class)->middleware('auth');
+Route::resource('dashboard', DashboardController1::class)->middleware(['auth', 'admin']);
 
-Route::get('/databengkel', [DashboardController1::class, 'data'])->middleware('auth');
+Route::resource('users', UserController::class)->middleware('auth');
+
+Route::get('/databengkel', [DashboardController1::class, 'data'])->middleware(['auth', 'admin']);
 
 Route::get('/browse/bengkels', [BengkelController::class, 'browse'])->middleware('auth');
