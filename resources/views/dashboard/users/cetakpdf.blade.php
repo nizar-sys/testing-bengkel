@@ -12,7 +12,7 @@
 		}
 	</style>
 	<center>
-		<h5>SIBENG</h4>
+		<h5>SIBENG Company</h4>
 		<h6>Laporan Data User dari Bulan {{ $users->first()->created_at->format('F') }} s/d Bulan {{ $users->last()->created_at->format('F') }}</h5>
 	</center>
  
