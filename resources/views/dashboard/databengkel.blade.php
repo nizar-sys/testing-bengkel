@@ -11,9 +11,10 @@
 
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Data Bengkel</h1>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+        <a href="/bengkel/cetakpdf" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
         <i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
     </div>
+
     @if (session()->has('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             {{ session('success') }}
@@ -22,12 +23,20 @@
             </button>
         </div>     
     @endif
+
+    <form action="/databengkel" class="d-inline">
+        <div class="input-group col-lg-3 float-right">   
+            <input type="text" class="form-control bg-light small" placeholder="Search ..." name="search" value="{{ request('search') }}">
+            <button class="btn btn-primary" type="submit">Search</button>
+        </div>
+    </form>
+
     <a href="/bengkels/create" class="btn btn-primary"><i class="fa-solid fa-plus fa-xs"></i> Tambah data</a>
     <table class="table table-bordered mt-2">
         <thead>
         <tr>
             <th scope="col">No.</th>
-            <th scope="col">Title</th>
+            <th scope="col">Nama Bengkel</th>
             <th scope="col">Address</th>
             <th scope="col">Description</th>
             <th scope="col">Latitude</th>

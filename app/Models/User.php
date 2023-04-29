@@ -47,6 +47,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function scopeFilter($query)
+    {
+        if(request('search')) {
+            return $query->where('username', 'like', '%' . request('search') . '%')
+                         ->orWhere('name', 'like', '%' . request('search') . '%');
+        }
+    }
+
     public function bengkels() 
     {
         return $this->hasMany(Bengkel::class, 'bengkel_id', 'id');

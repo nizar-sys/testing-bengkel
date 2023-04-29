@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,10 +48,14 @@ Route::post('/register', [RegisterController::class, 'store']);
 
 Route::resource('bengkels', BengkelController::class)->middleware('auth');
 
+Route::get('/bengkel/databengkel', [BengkelController::class, 'data'])->middleware('auth');
+
 Route::resource('dashboard', DashboardController1::class)->middleware(['auth', 'admin']);
 
 Route::resource('users', UserController::class)->middleware('auth');
 
 Route::get('/databengkel', [DashboardController1::class, 'data'])->middleware(['auth', 'admin']);
+Route::get('/bengkel/cetakpdf', [DashboardController1::class, 'cetakBengkel'])->middleware(['auth', 'admin']);
+Route::get('user/cetakpdf', [DashboardController1::class, 'cetakUser'])->middleware(['auth', 'admin']);
 
 Route::get('/browse/bengkels', [BengkelController::class, 'browse'])->middleware('auth');

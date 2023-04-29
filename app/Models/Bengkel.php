@@ -15,6 +15,14 @@ class Bengkel extends Model
     // {
     //     return $this->hasMany(BengkelPhoto::class, 'bengkel_id', 'id');
     // }
+    
+    public function scopeFilter($query)
+    {
+        if(request('search'))
+        {
+            return $query->where('title', 'like', '%' . request('search') . '%');
+        }
+    }
 
     public function user()
     {

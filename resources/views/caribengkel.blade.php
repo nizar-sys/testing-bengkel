@@ -7,7 +7,9 @@
                 {{-- <div id="create-bengkel">
                     <a href="/bengkels/create" class="btn btn-primary">Create!</a>
                 </div> --}}
+                <a href="/bengkel/databengkel" class="btn btn-primary">Table</a>
                 <div id="view-bengkel">
+                    
                     <a href="/bengkels" class="btn btn-secondary">List</a>
                     <a href="/browse/bengkels" class="btn btn-secondary">Globe</a>
                 </div>

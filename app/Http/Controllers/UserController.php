@@ -13,15 +13,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
-        $user = User::paginate(5)->withQueryString();
-
-        if(request('search')) {
-            $user->where('username', 'like', '%' . request('search') . '%');
-        }
-
+    { 
         return view('dashboard.datauser', [
-            'users' => $user
+            'users' => User::filter()->paginate(5)->withQueryString()
         ]);
     }
 
@@ -54,7 +48,11 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::findorFail($id);
+
+        return view('dashboard.detailuser', [
+            'user' => $user
+        ]);
     }
 
     /**

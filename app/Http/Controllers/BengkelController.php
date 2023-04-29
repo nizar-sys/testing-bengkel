@@ -150,4 +150,12 @@ class BengkelController extends Controller
 
         return redirect('/databengkel')->with('success', 'Data bengkel has been deleted!');
     }
+
+    public function data()
+    {
+        return view('databengkel', [
+            'bengkels' => Bengkel::filter()->paginate(10)->withQueryString(),
+            'title' => 'Data Bengkel'
+        ]);
+    }
 }

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bengkel;
+use App\Models\User;
 use Illuminate\Http\Request;
+
+use \PDF;
 
 class DashboardController1 extends Controller
 {
@@ -14,7 +17,10 @@ class DashboardController1 extends Controller
      */
     public function index()
     {
-        return view('dashboard.index');
+        return view('dashboard.index', [
+            'bengkels' => Bengkel::all(),
+            'users' => User::all()
+        ]);
     }
 
     /**
@@ -89,10 +95,24 @@ class DashboardController1 extends Controller
 
     public function data ()
     {
-        $bengkel = Bengkel::paginate(5)->withQueryString();
-
         return view('dashboard.databengkel', [
-            'bengkels' => $bengkel
+            'bengkels' => Bengkel::filter()->paginate(5)->withQueryString()
         ]);
+    }
+
+    public function cetakBengkel()
+    {
+        $bengkels = Bengkel::all();
+
+        $pdf = PDF::loadview('dashboard.bengkel.cetakpdf', ['bengkels' => $bengkels]);
+        return $pdf->download('laporanDataBengkel.pdf');
+    }
+
+    public function cetakUser()
+    {
+        $users = User::all();
+
+        $pdf = PDF::loadview('dashboard.users.cetakpdf', ['users' => $users]);
+        return $pdf->download('laporanDataUser.pdf');
     }
 }
