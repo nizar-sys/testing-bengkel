@@ -22,7 +22,7 @@
                     <form action="/bengkels" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
-                            <label for="title" class="form-label">Title</label>
+                            <label for="title" class="form-label">Nama Bengkel</label>
                             <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title"  autofocus>
                             @error('title')
                                 <div class="invalid-feedback">

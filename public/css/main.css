@@ -1,5 +1,12 @@
-body {
+html, body {
     font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.container {
+    min-height: 50%;
 }
 
 .navbar {
@@ -108,4 +115,73 @@ body {
 .contact-img {
     margin-top: -65px;
     margin-left: 15px;
+}
+
+.section-left {
+    margin-top: 0px;
+}
+
+.contact-info-location {
+    margin-bottom: 25px;
+  }
+
+.contact-info-location img {
+    width: 70px;
+    float: left;
+}
+
+.contact-info {
+    margin-bottom: 40px;
+}
+
+.contact-info img {
+    width: 70px;
+    float: left;
+}
+
+.location {
+    margin-left: 100px;
+}
+
+.location-header {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.location-text {
+    margin-top: -10px;
+}
+
+footer {
+    background: #2B3E74;
+}
+
+.footer-text h5 {
+    margin: 12px 0 20px 0;
+}
+
+.list-unstyled li {
+    margin-bottom: 5px;
+}
+
+.list-unstyled li a {
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.list-unstyled li a:hover {
+    color: #D7E3E1 !important;
+}
+
+.image a {
+    text-decoration: none;
+}
+
+.fa-brands {
+    color: #fff;
+    margin-left: 24px;
+}
+
+.fa-brands:hover {
+    color:#D7E3E1;
 }

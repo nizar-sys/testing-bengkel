@@ -1,15 +1,15 @@
 @extends('layouts.main')
 
 @section('container')
-    <nav aria-label="breadcrumb">
+    <nav aria-label="breadcrumb" class="mt-3">
         <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/" style="text-decoration: none">SIBENG</a></li>
         <li class="breadcrumb-item active">Data Bengkel</li>
         </ol>
     </nav>
 
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Data Bengkel</h1>
+    <div class="d-sm-flex align-items-center justify-content-center mb-4">
+        <h1 class="h3 mb-0 text-gray-800 text-center">Data Bengkel</h1>
         {{-- <a href="/bengkel/cetakpdf" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
         <i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> --}}
     </div>

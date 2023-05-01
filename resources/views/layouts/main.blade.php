@@ -26,67 +26,64 @@
         @yield('container')
     </div>
     
-    <section>
-        <div class="container">
-            <footer class="py-5">
-              <div class="row">
-                <div class="col-6 col-md-2 mb-3">
-                  <h5>Section</h5>
-                  <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
-                  </ul>
-                </div>
-          
-                <div class="col-6 col-md-2 mb-3">
-                  <h5>Section</h5>
-                  <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
-                  </ul>
-                </div>
-          
-                <div class="col-6 col-md-2 mb-3">
-                  <h5>Section</h5>
-                  <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
-                  </ul>
-                </div>
-          
-                <div class="col-md-5 offset-md-1 mb-3">
-                  <form>
-                    <h5>Subscribe to our newsletter</h5>
-                    <p>Monthly digest of what's new and exciting from us.</p>
-                    <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-                      <label for="newsletter1" class="visually-hidden">Email address</label>
-                      <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
-                      <button class="btn btn-primary" type="button">Subscribe</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-          
-              <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-                <p>&copy; 2022 Company, Inc. All rights reserved.</p>
-                <ul class="list-unstyled d-flex">
-                  <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg></a></li>
-                  <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
-                  <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
-                </ul>
-              </div>
-            </footer>
+    <footer class="test" style="margin-top: 100px">
+      <div class="container p-4">
+        <div class="row">
+          <div class="col-lg-4">
+              <img src="/assets/images/Atensi.png">
+              <img src="/assets/images/Kemensos.png">
           </div>
-    </section>
+          <div class="col-lg-2 footer-text">
+              <h5 class="text-white">About Us</h5>
+              <ul class="list-unstyled">
+                <li>
+                  <a href="#" class="text-white">Our Story</a>
+                </li>
+                <li>
+                  <a href="#" class="text-white">Visi & Misi</a>
+                </li>
+                <li>
+                  <a href="#" class="text-white">Teams</a>
+                </li>
+                {{-- <li>
+                  <a href="#" class="text-white">Sarana & Prasarana</a>
+                </li> --}}
+              </ul>
+          </div>
+          <div class="col-lg-3 footer-text">
+              <h5 class="text-white">Product</h5>
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <a href="#" class="text-white">Feature</a>
+                </li>
+                <li>
+                  <a href="#" class="text-white">Partnerships</a>
+                </li>
+                <li>
+                  <a href="#" class="text-white">Testimonials</a>
+                </li>
+              </ul>
+          </div>
+          <div class="col-lg-3 footer-text">
+              <h5 class="text-white">Follow Our Social Media</h5>
+              <div class="image">
+                  <a href="#">
+                      <i class="fa-brands fa-facebook-square fa-2xl"></i>
+                  </a>
+                  <a href="#">
+                      <i class="fa-brands fa-instagram fa-2xl"></i>
+                  </a>
+                  <a href="#">
+                      <i class="fa-brands fa-youtube fa-2xl"></i>
+                  </a>
+              </div>
+          </div>
+          <div class="d-flex flex-column flex-sm-row justify-content-between py-3 my-2 border-top">
+            <p class="text-white">&copy; 2023 SIBENG Company, Inc. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+  </footer>
 
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/4406ce97fd.js" crossorigin="anonymous"></script>

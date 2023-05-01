@@ -33,6 +33,7 @@
               @else
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="/dashboard">Dashboard</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <form action="/logout" method="POST">
                   @csrf
