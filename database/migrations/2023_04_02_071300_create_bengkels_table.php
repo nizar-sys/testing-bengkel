@@ -21,6 +21,8 @@ return new class extends Migration
             $table->text('description');
             $table->string('latitude');
             $table->string('longitude');
+            $table->time('jambuka', $precision = 0);
+            $table->time('jamtutup', $precision = 0);
             $table->string('image');
             $table->timestamps();
 

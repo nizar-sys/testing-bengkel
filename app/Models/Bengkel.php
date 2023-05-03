@@ -10,6 +10,7 @@ class Bengkel extends Model
     use HasFactory;
 
     protected $guarded = [];
+    protected $dates = ['jambuka', 'jamtutup'];
 
     // public function photos()
     // {

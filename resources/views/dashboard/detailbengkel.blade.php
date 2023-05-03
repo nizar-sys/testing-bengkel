@@ -19,6 +19,7 @@
                     <h5 class="mt-3">{{ $bengkel->address }}</h5>
                     <h5>{{ $bengkel->description }}</h5>
                     <h5>{{ $bengkel->created_at->format('h F Y') }}</h5>
+                    <h5>{{ $bengkel->jambuka->format('H:i') }} s/d {{ $bengkel->jamtutup->format('H:i') }}</h5>
                 </div>
             </div>
         </div>

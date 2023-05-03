@@ -71,6 +71,27 @@
                             @enderror
                         </div>
                         <div class="mb-3">
+                            <label for="jambuka" class="form-label">Jam Buka</label>
+                            <input type="time" class="form-control @error('jambuka') is-invalid @enderror" name="jambuka" id="jambuka" onchange="myFunction()" >
+                            {{-- <button onclick="myFunction()">Try it</button> --}}
+                            <p id="demo"></p>
+                            @error('jambuka')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="jamtutup" class="form-label">Jam Tutup</label>
+                            <input type="time" class="form-control @error('jamtutup') is-invalid @enderror" name="jamtutup" id="jamtutup" onchange="myFunction()" >
+                            <p id="demo1"></p>
+                            @error('jamtutup')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
                             <label for="image" class="form-label">Bengkel Photo</label>
                             <img class="img-preview img-fluid mb-3 col-sm-2">
                             <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image" onchange="previewImage()">
@@ -120,6 +141,13 @@
         //         jQuery(this).parents(".input-group").remove();
         //     })
         // })
+
+        function myFunction() {
+	        var x = document.getElementById("jambuka").value;
+	        document.getElementById("demo").innerHTML = x;
+            var y = document.getElementById("jamtutup").value;
+            document.getElementById("demo1").innerHTML = y;
+	    }
 
         function previewImage() {
             const image = document.querySelector('#image');

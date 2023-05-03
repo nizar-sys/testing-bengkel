@@ -72,8 +72,7 @@
                 <tr>
                     <h5 class="text-center">Data tidak tersedia!</h5>  
                 </tr>         
-            @endif
-            
+            @endif           
         </tbody>
     </table>
 

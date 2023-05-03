@@ -42,21 +42,29 @@
             <th scope="col">Description</th>
             <th scope="col">Latitude</th>
             <th scope="col">Longitude</th>
+            <th scope="col">Jam Buka</th>
             <th scope="col">Rute</th>
         </tr>
         </thead>
         <tbody>
-            @foreach ($bengkels as $bengkel)
-            <tr>
-                <td>{{ (($bengkels->currentPage() - 1 ) * $bengkels->perPage() ) + $loop->iteration }}</td>
-                <td>{{ $bengkel->title }}</td>
-                <td>{{ $bengkel->address }}</td>
-                <td>{{ $bengkel->description }}</td>
-                <td>{{ $bengkel->latitude }}</td>
-                <td>{{ $bengkel->longitude }}</td>
-                <td><a href="#" onclick="openDirection({{ $bengkel->latitude }}, {{ $bengkel->longitude }}, {{ $bengkel->id }})" class="card-link">Direction</a></td>
-            </tr>
-            @endforeach
+            @if ($bengkels->count() > 0)
+                @foreach ($bengkels as $bengkel)
+                <tr>
+                    <td>{{ (($bengkels->currentPage() - 1 ) * $bengkels->perPage() ) + $loop->iteration }}</td>
+                    <td>{{ $bengkel->title }}</td>
+                    <td>{{ $bengkel->address }}</td>
+                    <td>{{ $bengkel->description }}</td>
+                    <td>{{ $bengkel->latitude }}</td>
+                    <td>{{ $bengkel->longitude }}</td>
+                    <td>{{ $bengkel->jambuka->format('H:i') }} s/d {{ $bengkel->jamtutup->format('H:i') }}</td>
+                    <td><a href="#" onclick="openDirection({{ $bengkel->latitude }}, {{ $bengkel->longitude }}, {{ $bengkel->id }})" class="card-link">Direction</a></td>
+                </tr>
+                @endforeach
+            @else
+                <tr>
+                    <h5 class="mt-3" style="color: red">Data tidak tersedia!</h5>
+                </tr>
+            @endif
         </tbody>
     </table>
     <div class="d-flex justify-content-center">

@@ -41,32 +41,43 @@
             <th scope="col">Description</th>
             <th scope="col">Latitude</th>
             <th scope="col">Longitude</th>
+            <th scope="col">Jam Buka</th>
+            <th scope="col">Jam Tutup</th>
             <th scope="col">Tanggal</th>
             <th scope="col">Aksi</th>
         </tr>
         </thead>
         <tbody>
-            @foreach ($bengkels as $bengkel)
-            <tr>
-                <td>{{ (($bengkels->currentPage() - 1 ) * $bengkels->perPage() ) + $loop->iteration }}</td>
-                <td>{{ $bengkel->title }}</td>
-                <td>{{ $bengkel->address }}</td>
-                <td>{{ $bengkel->description }}</td>
-                <td>{{ $bengkel->latitude }}</td>
-                <td>{{ $bengkel->longitude }}</td>
-                <td>{{ $bengkel->created_at->format('h F Y') }}</td>
-                <td>
-                    <a class="btn btn-success" href="/dashboard/{{ $bengkel->id }}"><i class="fa-solid fa-eye"></i></a>
-                    <a class="btn btn-warning" href="/bengkels/{{ $bengkel->id }}/edit"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <form action="/bengkels/{{ $bengkel->id }}" method="post" class="d-inline">
-                         @method('delete')
-                         @csrf
-                            <button type="submit" class="btn btn-danger me-auto" onclick="return confirm('Are you sure ?')"><i class="fa-solid fa-trash-can"></i></button>
-                            <input type="hidden" name="image" value="{{ $bengkel->image }}">
-                    </form>
-                </td>
-            </tr>
-            @endforeach
+            @if ($bengkels->count() > 0)
+                @foreach ($bengkels as $bengkel)
+                <tr>
+                    <td>{{ (($bengkels->currentPage() - 1 ) * $bengkels->perPage() ) + $loop->iteration }}</td>
+                    <td>{{ $bengkel->title }}</td>
+                    <td>{{ $bengkel->address }}</td>
+                    <td>{{ $bengkel->description }}</td>
+                    <td>{{ $bengkel->latitude }}</td>
+                    <td>{{ $bengkel->longitude }}</td>
+                    
+                    <td>{{ $bengkel->jambuka->format('H:i') }}</td>
+                    <td>{{ $bengkel->jamtutup->format('H:i') }}</td>
+                    <td>{{ $bengkel->created_at->format('h F Y') }}</td>
+                    <td>
+                        <a class="btn btn-success" href="/dashboard/{{ $bengkel->id }}"><i class="fa-solid fa-eye"></i></a>
+                        <a class="btn btn-warning" href="/bengkels/{{ $bengkel->id }}/edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <form action="/bengkels/{{ $bengkel->id }}" method="post" class="d-inline">
+                            @method('delete')
+                            @csrf
+                                <button type="submit" class="btn btn-danger me-auto" onclick="return confirm('Are you sure ?')"><i class="fa-solid fa-trash-can"></i></button>
+                                <input type="hidden" name="image" value="{{ $bengkel->image }}">
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+            @else
+                <tr>
+                    <h5 class="text-center">Data tidak tersedia!</h5>  
+                </tr> 
+            @endif
         </tbody>
     </table>
     <div class="d-flex justify-content-center">

@@ -21,6 +21,7 @@
                     <h4>{{ $bengkels->title }}</h4>
                     <span>{{ $bengkels->address }}</span>
                     <p>{{ $bengkels->description }}</p>
+                    <p>{{ $bengkels->jambuka->format('H:i') }} s/d {{ $bengkels->jamtutup->format('H:i') }}</p>
                     <div id="summary"></div>
                 </div>
             </div>

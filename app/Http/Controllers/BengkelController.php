@@ -49,13 +49,16 @@ class BengkelController extends Controller
      */
     public function store(Request $request)
     {
+        
         $validatedData = $request->validate([
             'title' => 'required|min:5',
             'address' => 'required|min:5',
             'description' => 'required|min:10',
             'latitude' => 'required',
             'longitude' => 'required',
-            'image' => 'required|image|file|max:2048'
+            'image' => 'required|image|file|max:2048',
+            'jambuka' => 'required',
+            'jamtutup' => 'required'
         ]);
 
         if ($request->file('image')) {
@@ -116,6 +119,8 @@ class BengkelController extends Controller
             'description' => 'required|min:10',
             'latitude' => 'required',
             'longitude' => 'required',
+            'jambuka' => 'required',
+            'jamtutup' => 'required',
             'image' => 'required|image|file|max:2048'
         ]);
 

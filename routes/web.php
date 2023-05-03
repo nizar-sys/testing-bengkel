@@ -52,7 +52,7 @@ Route::get('/bengkel/databengkel', [BengkelController::class, 'data'])->middlewa
 
 Route::resource('dashboard', DashboardController1::class)->middleware(['auth', 'admin']);
 
-Route::resource('users', UserController::class)->middleware('auth');
+Route::resource('users', UserController::class)->middleware(['auth', 'admin']);
 
 Route::get('/databengkel', [DashboardController1::class, 'data'])->middleware(['auth', 'admin']);
 Route::get('/bengkel/cetakpdf', [DashboardController1::class, 'cetakBengkel'])->middleware(['auth', 'admin']);
