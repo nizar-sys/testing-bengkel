@@ -297,6 +297,14 @@ if (navigator.geolocation) {
     function openDirection(lat, lng, id) {
       window.open(`/bengkels/${id}?from=${objLocalCoord.lat},${objLocalCoord.lng}&to=${lat},${lng}`, "_self");
     }
+
+    btnEl = document.querySelector('#terdekat');
+
+    function openList() {
+      window.open(`/api/bengkel?lat=${objLocalCoord.lat}&lng=${objLocalCoord.lng}&rad=40`)
+    }
+
+    btnEl.addEventListener('click', openList)
 } else {
     console.error("Geolocation is not supported sama browser lu bro!");
 }

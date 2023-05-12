@@ -8,6 +8,7 @@
                     <a href="/bengkels/create" class="btn btn-primary">Create!</a>
                 </div> --}}
                 <a href="/bengkel/databengkel" class="btn btn-primary">Table</a>
+                <a href="#" class="btn btn-primary" id="terdekat">Terdekat</a>
                 <div id="view-bengkel">
                     
                     <a href="/bengkels" class="btn btn-secondary">List</a>
