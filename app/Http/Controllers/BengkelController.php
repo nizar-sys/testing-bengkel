@@ -14,11 +14,26 @@ class BengkelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $bengkels = Bengkel::all();
+
+        if ($request->has('lat') && $request->has('lng')) {
+            $radius = $request->rad ?? 10; // Jarak dalam kilometer
+            $latitude = $request->lat;
+            $longitude = $request->lng;
+            $bengkels = Bengkel::selectRaw("*,
+                (6371 * acos(cos(radians($latitude)) * cos(radians(latitude)) * cos(radians(longitude) - radians($longitude)) + sin(radians($latitude)) * sin(radians(latitude))))
+                AS distance")
+                ->having('distance', '<', $radius)
+                ->orderBy('distance')
+                ->get();
+
+        }
+
         return view('caribengkel', [
             "title" => "Cari Bengkel",
-            "bengkels" => Bengkel::all()
+            "bengkels" => $bengkels,
         ]);
     }
 
@@ -38,7 +53,7 @@ class BengkelController extends Controller
     {
         return view('dashboard.bengkel.create1', [
             "title" => "Create Bengkel"
-        ]);    
+        ]);
     }
 
     /**
@@ -49,7 +64,7 @@ class BengkelController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $validatedData = $request->validate([
             'title' => 'required|min:5',
             'address' => 'required|min:5',
@@ -64,7 +79,7 @@ class BengkelController extends Controller
         if ($request->file('image')) {
             $validatedData['image'] = $request->file('image')->store('bengkel-images');
         }
-        
+
         $validatedData['user_id'] = auth()->user()->id;
 
         Bengkel::create($validatedData);

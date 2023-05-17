@@ -8,9 +8,15 @@
                     <a href="/bengkels/create" class="btn btn-primary">Create!</a>
                 </div> --}}
                 <a href="/bengkel/databengkel" class="btn btn-primary">Table</a>
-                <a href="#" class="btn btn-primary" id="terdekat">Terdekat</a>
+                <form action="" method="get" id="form-bengkel-terdekat">
+                    @csrf
+                    <input type="hidden" name="lat" id="lat-input">
+                    <input type="hidden" name="lng" id="lng-input">
+                    <input type="hidden" name="rad" id="rad-input">
+                </form>
+                <button id="get-bengkel-terdekat" class="btn btn-primary">Terdekat</button>
                 <div id="view-bengkel">
-                    
+
                     <a href="/bengkels" class="btn btn-secondary">List</a>
                     <a href="/browse/bengkels" class="btn btn-secondary">Globe</a>
                 </div>
@@ -49,11 +55,32 @@
                             <p class="card-text">{{ $bengkel->description }}</p>
                             <a href="#" onclick="openDirection({{ $bengkel->latitude }}, {{ $bengkel->longitude }}, {{ $bengkel->id }})" class="card-link">Direction</a>
                         </div>
-                    </div>              
+                    </div>
                 @endforeach
             @endif
 
-            
+
         </div>
     </div>
 @endsection
+
+@push('script')
+    <script>
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var lat = position.coords.latitude;
+                var lng = position.coords.longitude;
+                var form = document.getElementById('form-bengkel-terdekat');
+
+                $('#lat-input').val(lat);
+                $('#lng-input').val(lng);
+                $('#rad-input').val(40);
+                $('#get-bengkel-terdekat').click(function() {
+                    form.submit();
+                })
+            });
+        } else {
+            alert('Geolocation is not supported by this browser.');
+        }
+    </script>
+@endpush
